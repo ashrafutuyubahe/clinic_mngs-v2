@@ -10,4 +10,5 @@ public class ClinicManagementApplication {
 		SpringApplication.run(ClinicManagementApplication.class, args);
 	}
 
+
 }
