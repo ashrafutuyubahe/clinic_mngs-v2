@@ -2,21 +2,18 @@ package com.Clinic.clinic_management.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
+
 import org.springframework.web.bind.annotation.*;
 
-import com.Clinic.clinic_management.Dto.ForgotPasswordRequest;
 import com.Clinic.clinic_management.Dto.LoginDto;
 import com.Clinic.clinic_management.Dto.LoginResponseDto;
 import com.Clinic.clinic_management.Dto.RegisterDto;
-import com.Clinic.clinic_management.Dto.ResetPasswordRequestDto;
-import com.Clinic.clinic_management.Dto.VerifyCodeRequestDto;
-import com.Clinic.clinic_management.ServiceImpl.AuthServiceImpl;
 
+import com.Clinic.clinic_management.ServiceImpl.AuthServiceImpl;
 
 @RestController
 @CrossOrigin(origins = "*")
-@RequestMapping("agro-volve/api/v1/auth")
+@RequestMapping("clinic-mngs-v2/api/v1/auth")
 public class AuthController {
 
     private final AuthServiceImpl authServiceImpl;
@@ -38,7 +35,6 @@ public class AuthController {
 
         return ResponseEntity.ok(response);
     }
-
 
     @GetMapping("/welcome")
     public ResponseEntity<String> welcome() {
