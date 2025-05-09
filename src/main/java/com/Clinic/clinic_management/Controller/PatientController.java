@@ -1,7 +1,11 @@
 package com.Clinic.clinic_management.Controller;
 
-
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.http.ResponseEntity;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.*;
 
 import com.Clinic.clinic_management.Dto.CreatePatientDTO;
@@ -49,4 +53,23 @@ public class PatientController {
         patientService.deletePatient(id);
         return "Patient with ID " + id + " deleted successfully.";
     }
+
+    @GetMapping("/get-all-Paginated")
+public Page<Patient> getAllPatients(
+        @RequestParam(defaultValue = "0") int page,
+        @RequestParam(defaultValue = "2") int size
+      
+) {
+    Pageable pageable = PageRequest.of(page, size);
+    return patientService.getAllPatients(pageable);
+}
+
+@GetMapping("/sorted-by-name")
+public ResponseEntity<List<Patient>> getAllSortedByName(
+        @RequestParam(defaultValue = "asc") String sortDir) {
+
+    List<Patient> sortedSuppliers = patientService.getAllPatientySortedByName(sortDir);
+    return ResponseEntity.ok(sortedSuppliers);
+}
+
 }

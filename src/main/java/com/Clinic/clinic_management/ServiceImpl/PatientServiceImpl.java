@@ -3,7 +3,9 @@ package com.Clinic.clinic_management.ServiceImpl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import com.Clinic.clinic_management.Dto.CreatePatientDTO;
 import com.Clinic.clinic_management.Dto.UpdatePatientDTO;
 import com.Clinic.clinic_management.Models.Patient;
@@ -69,4 +71,19 @@ public class PatientServiceImpl implements PatientService {
         }
         patientRepository.deleteById(id);
     }
+
+    @Override
+    public Page<Patient> getAllPatients(Pageable pageable) {
+        return patientRepository.findAll(pageable);
+    }
+
+    public List<Patient> getAllPatientySortedByName(String sortDir) {
+        
+        Sort sort = sortDir.equalsIgnoreCase("desc") ?
+                    Sort.by("patientName").descending() :
+                    Sort.by("patientName").ascending();
+    
+        return patientRepository.findAll(sort);
+    }
+
 }
