@@ -61,14 +61,14 @@ public Page<Patient> getAllPatients(
       
 ) {
     Pageable pageable = PageRequest.of(page, size);
-    return patientService.getAllPatients(pageable);
+    return patientService.getAllPatientsPaginated(pageable);
 }
 
 @GetMapping("/sorted-by-name")
 public ResponseEntity<List<Patient>> getAllSortedByName(
         @RequestParam(defaultValue = "asc") String sortDir) {
 
-    List<Patient> sortedSuppliers = patientService.getAllPatientySortedByName(sortDir);
+    List<Patient> sortedSuppliers = patientService.getAllPatientSortedByName(sortDir);
     return ResponseEntity.ok(sortedSuppliers);
 }
 

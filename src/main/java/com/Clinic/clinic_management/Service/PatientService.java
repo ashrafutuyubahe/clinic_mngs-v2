@@ -19,9 +19,9 @@ public interface PatientService {
     List<Patient> getAllPatients();
     Patient updatePatient(Long id, UpdatePatientDTO dto);
     void deletePatient(Long id);
-    Page<Patient> getAllPatients(Pageable pageable);
+    Page<Patient> getAllPatientsPaginated(Pageable pageable);
     
-    @Query("SELECT Patient FROM  Patient WHERE s.fullName = :fullName")
-    List<Patient> getAllPatientySortedByName(@Param("fullName") String fullName);
+   
+    List<Patient> getAllPatientSortedByName(String fullName);
 
 }

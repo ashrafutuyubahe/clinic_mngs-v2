@@ -73,11 +73,11 @@ public class PatientServiceImpl implements PatientService {
     }
 
     @Override
-    public Page<Patient> getAllPatients(Pageable pageable) {
+    public Page<Patient> getAllPatientsPaginated(Pageable pageable) {
         return patientRepository.findAll(pageable);
     }
 
-    public List<Patient> getAllPatientySortedByName(String sortDir) {
+    public List<Patient> getAllPatientSortedByName(String sortDir) {
         
         Sort sort = sortDir.equalsIgnoreCase("desc") ?
                     Sort.by("patientName").descending() :
