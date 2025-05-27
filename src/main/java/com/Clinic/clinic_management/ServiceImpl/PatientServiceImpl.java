@@ -1,6 +1,5 @@
 package com.Clinic.clinic_management.ServiceImpl;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.data.domain.Page;
@@ -11,7 +10,6 @@ import com.Clinic.clinic_management.Dto.UpdatePatientDTO;
 import com.Clinic.clinic_management.Models.Patient;
 import com.Clinic.clinic_management.Repository.PatientRepository;
 import com.Clinic.clinic_management.Service.PatientService;
-
 import java.util.List;
 
 @Service
@@ -77,13 +75,11 @@ public class PatientServiceImpl implements PatientService {
         return patientRepository.findAll(pageable);
     }
 
+    @Override
     public List<Patient> getAllPatientSortedByName(String sortDir) {
-        
         Sort sort = sortDir.equalsIgnoreCase("desc") ?
-                    Sort.by("patientName").descending() :
-                    Sort.by("patientName").ascending();
-    
+                    Sort.by("fullName").descending() :
+                    Sort.by("fullName").ascending();
         return patientRepository.findAll(sort);
     }
-
 }
