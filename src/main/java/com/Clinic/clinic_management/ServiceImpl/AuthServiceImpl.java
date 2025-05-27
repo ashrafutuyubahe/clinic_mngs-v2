@@ -41,6 +41,7 @@
 
         @Override
         public String registerUser(RegisterDto registerDto) {
+         
             if (userRepository.findByUserEmail(registerDto.getUserEmail()).isPresent()) {
                 return "Email already exists";
             }

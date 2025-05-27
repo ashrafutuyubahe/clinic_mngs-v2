@@ -14,7 +14,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("clinic-mngs-v2/api/v1/patients")
-@CrossOrigin(origins = "*") 
 public class PatientController {
 
     @Autowired
