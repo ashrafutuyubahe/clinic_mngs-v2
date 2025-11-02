@@ -87,7 +87,7 @@
 <dependency>
     <groupId>org.flywaydb</groupId>
     <artifactId>flyway-database-postgresql</artifactId>
-    <version>11.8.2</version> <!-- Match the version with flyway-core -->
+    <version>11.14.0</version> <!-- Match the version with flyway-core -->
 </dependency>
 
 	<dependency>
